@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 36 85% 67%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 17 68% 53%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 40 50% 95%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 222 38% 40%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 36 30% 80%;
+    --input: 36 30% 85%;
+    --ring: 36 85% 67%;
+    --radius: 0.5rem;
+    
+    /* 甲马映画品牌色 */
+    --jima-orange: #F2B263;
+    --jima-red: #D95D39;
+    --jima-blue: #3F548A;
+    --jima-brick: #963D35;
+    --jima-green: #349876;
+    --jima-brown: #5D4037;
+    --jima-cream: #F9F3E3;
+    --jima-black: #000000;
+    --jima-white: #FFFFFF;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+  }
+}
+
+@layer components {
+  .jima-gradient-home {
+    background: linear-gradient(180deg, var(--jima-orange) 0%, var(--jima-red) 100%);
+  }
+  
+  .jima-bg-aigc {
+    background-color: var(--jima-blue);
+  }
+  
+  .jima-bg-trade {
+    background-color: var(--jima-brick);
+  }
+  
+  .jima-bg-forum {
+    background-color: var(--jima-green);
+  }
+  
+  .jima-bg-about {
+    background-color: var(--jima-cream);
+  }
+  
+  .woodcut-shadow {
+    box-shadow: 
+      4px 4px 0px rgba(0, 0, 0, 0.2),
+      inset 0 0 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .paper-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300;
+    background-color: var(--jima-orange);
+    color: var(--jima-black);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--jima-red);
+    color: var(--jima-white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(217, 93, 57, 0.3);
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .nav-link {
+    @apply relative px-4 py-2 text-sm font-medium transition-colors duration-300;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 w-0 h-0.5 transition-all duration-300;
+    background-color: currentColor;
+    transform: translateX(-50%);
+  }
+  
+  .nav-link:hover::after {
+    @apply w-3/4;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6;
+    font-family: 'Noto Serif SC', serif;
+  }
+  
+  .ink-border {
+    border: 2px solid var(--jima-black);
+    box-shadow: 3px 3px 0 var(--jima-black);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-ink-spread {
+    animation: inkSpread 2s ease-out forwards;
+  }
+  
+  @keyframes inkSpread {
+    0% {
+      clip-path: circle(0% at 50% 50%);
+    }
+    100% {
+      clip-path: circle(100% at 50% 50%);
+    }
+  }
+}
